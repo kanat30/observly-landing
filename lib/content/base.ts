@@ -134,9 +134,9 @@ export const pricingTierBase = {
   starter: {
     name: 'Starter',
     subtitle: 'Small schools',
-    price: '$200',
+    price: '$199',
     period: '/month',
-    annual: '$2,400/year',
+    annual: '$1,690/year',
     cta: 'Start Free Trial',
     popular: false,
     baseFeatures: [
@@ -146,11 +146,11 @@ export const pricingTierBase = {
     ],
   },
   professional: {
-    name: 'Professional',
+    name: 'Plus',
     subtitle: 'Most schools',
-    price: '$350',
+    price: '$399',
     period: '/month',
-    annual: '$4,200/year',
+    annual: '$3,490/year',
     cta: 'Start Free Trial',
     popular: true,
     baseFeatures: [
@@ -163,16 +163,16 @@ export const pricingTierBase = {
     ],
   },
   enterprise: {
-    name: 'Enterprise',
+    name: 'Max',
     subtitle: 'Large schools',
-    price: '$500',
+    price: '$599',
     period: '/month',
-    annual: '$6,000/year',
-    cta: 'Contact Us',
+    annual: '$4,990/year',
+    cta: 'Start Free Trial',
     popular: false,
     baseFeatures: [
       'Unlimited teachers',
-      'Everything in Professional',
+      'Everything in Plus',
       'Web dashboard',
       'Analytics & reporting',
       'Multiple admin accounts',

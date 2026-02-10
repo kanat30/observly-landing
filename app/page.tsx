@@ -63,7 +63,7 @@ export default async function ObservlyLanding() {
           <img
             src="/logo/observly-logo.png"
             alt="Observly"
-            style={{ height: '36px', width: 'auto' }}
+            style={{ height: '100px', width: 'auto' }}
           />
           <div style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
             <a href="#features" style={{ color: colors.charcoal, textDecoration: 'none', fontSize: '14px', fontWeight: 500, letterSpacing: '-0.01em', transition: 'color 0.2s' }}>Features</a>
@@ -273,7 +273,7 @@ export default async function ObservlyLanding() {
       </section>
 
       {/* Problem/Solution Section */}
-      <section className="section-reveal" style={{ padding: '120px 32px', backgroundColor: colors.white, position: 'relative' }}>
+      <section style={{ padding: '120px 32px', backgroundColor: colors.white, position: 'relative' }}>
         {/* Decorative corner */}
         <div style={{
           position: 'absolute',
@@ -366,7 +366,7 @@ export default async function ObservlyLanding() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="section-reveal" style={{ padding: '120px 32px', backgroundColor: colors.cream, position: 'relative' }}>
+      <section id="features" style={{ padding: '120px 32px', backgroundColor: colors.cream, position: 'relative' }}>
         {/* Background texture */}
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundImage: `radial-gradient(circle at 20% 50%, ${colors.burgundy}03 0%, transparent 50%)`, pointerEvents: 'none' }} />
 
@@ -399,7 +399,7 @@ export default async function ObservlyLanding() {
       </section>
 
       {/* How It Works */}
-      <section className="section-reveal" style={{ padding: '120px 32px', backgroundColor: colors.white, position: 'relative' }}>
+      <section style={{ padding: '120px 32px', backgroundColor: colors.white, position: 'relative' }}>
         {/* Decorative line */}
         <div style={{ position: 'absolute', top: '50%', left: '15%', right: '15%', height: '1px', background: `linear-gradient(90deg, transparent, ${colors.gold}20, transparent)`, pointerEvents: 'none' }} />
 
@@ -484,7 +484,7 @@ export default async function ObservlyLanding() {
       </section>
 
       {/* Built by Principals Section */}
-      <section className="section-reveal" style={{ padding: '120px 32px', background: `linear-gradient(135deg, ${colors.burgundy} 0%, ${colors.burgundyDeep} 100%)`, position: 'relative', overflow: 'hidden' }}>
+      <section style={{ padding: '120px 32px', background: `linear-gradient(135deg, ${colors.burgundy} 0%, ${colors.burgundyDeep} 100%)`, position: 'relative', overflow: 'hidden' }}>
         {/* Decorative shapes */}
         <div style={{ position: 'absolute', top: '-50px', right: '-50px', width: '200px', height: '200px', border: '2px solid rgba(255,255,255,0.05)', borderRadius: '50%', pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', bottom: '-80px', left: '-80px', width: '300px', height: '300px', border: '2px solid rgba(255,255,255,0.03)', borderRadius: '50%', pointerEvents: 'none' }} />
@@ -538,7 +538,7 @@ export default async function ObservlyLanding() {
       </section>
 
       {/* Pricing */}
-      <section id="pricing" className="section-reveal" style={{ padding: '120px 32px', backgroundColor: colors.cream, position: 'relative' }}>
+      <section id="pricing" style={{ padding: '120px 32px', backgroundColor: colors.cream, position: 'relative' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '72px' }}>
             {/* Section Label */}
@@ -675,7 +675,7 @@ export default async function ObservlyLanding() {
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="section-reveal" style={{ padding: '120px 32px', backgroundColor: colors.white, position: 'relative' }}>
+      <section id="faq" style={{ padding: '120px 32px', backgroundColor: colors.white, position: 'relative' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '72px' }}>
             {/* Section Label */}
