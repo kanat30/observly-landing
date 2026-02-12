@@ -495,7 +495,7 @@ export function LandingContent({ region, content }: LandingContentProps) {
 
           <div className="how-it-works-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '40px' }}>
             {content.howItWorks.map((item, i) => (
-              <div key={i} className="hover-lift" style={{ textAlign: 'center', padding: '20px', transition: `all ${theme.animationMedium} ease` }}>
+              <div key={i} className="hover-lift how-it-works-card" style={{ textAlign: 'center', padding: '20px', transition: `all ${theme.animationMedium} ease` }}>
                 <div className="how-it-works-icon" style={{
                   width: '88px',
                   height: '88px',
@@ -531,18 +531,20 @@ export function LandingContent({ region, content }: LandingContentProps) {
                     {item.step}
                   </div>
                 </div>
-                <h3 className="how-it-works-title" style={{
-                  fontSize: '22px',
-                  fontWeight: 700,
-                  color: colors.charcoal,
-                  marginBottom: '12px',
-                  fontFamily: theme.headingFont,
-                }}>
-                  {item.title}
-                </h3>
-                <p className="how-it-works-desc" style={{ fontSize: '15px', color: colors.charcoalLight, lineHeight: 1.7 }}>
-                  {item.description}
-                </p>
+                <div className="how-it-works-text">
+                  <h3 className="how-it-works-title" style={{
+                    fontSize: '22px',
+                    fontWeight: 700,
+                    color: colors.charcoal,
+                    marginBottom: '12px',
+                    fontFamily: theme.headingFont,
+                  }}>
+                    {item.title}
+                  </h3>
+                  <p className="how-it-works-desc" style={{ fontSize: '15px', color: colors.charcoalLight, lineHeight: 1.7 }}>
+                    {item.description}
+                  </p>
+                </div>
               </div>
             ))}
           </div>

@@ -241,6 +241,15 @@ const globalStyles = `
 
   /* Tablet: 1024px and below */
   @media (max-width: 1024px) {
+    /* Hide desktop nav, show mobile CTA */
+    .nav-links {
+      display: none !important;
+    }
+
+    .nav-mobile {
+      display: flex !important;
+    }
+
     .hero-grid {
       grid-template-columns: 1fr !important;
       gap: 48px !important;
@@ -269,15 +278,6 @@ const globalStyles = `
 
   /* Mobile: 768px and below */
   @media (max-width: 768px) {
-    /* Navigation - completely hide desktop nav */
-    .nav-links {
-      display: none !important;
-    }
-
-    .nav-mobile {
-      display: flex !important;
-    }
-
     /* Hero section - more compact */
     .hero-section {
       padding-top: 90px !important;
@@ -413,44 +413,50 @@ const globalStyles = `
       height: 200px !important;
     }
 
-    /* How it works - horizontal scroll on mobile */
+    /* How it works - compact horizontal layout on mobile */
     .how-it-works-grid {
       display: flex !important;
-      overflow-x: auto !important;
+      flex-direction: column !important;
       gap: 20px !important;
-      padding-bottom: 16px !important;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
     }
 
-    .how-it-works-grid::-webkit-scrollbar {
-      display: none;
-    }
-
-    .how-it-works-grid > div {
-      min-width: 240px !important;
-      flex-shrink: 0 !important;
+    .how-it-works-card {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: flex-start !important;
+      gap: 14px !important;
+      text-align: left !important;
+      padding: 0 !important;
     }
 
     .how-it-works-icon {
-      width: 60px !important;
-      height: 60px !important;
-      font-size: 24px !important;
-      margin-bottom: 16px !important;
+      width: 48px !important;
+      height: 48px !important;
+      font-size: 20px !important;
+      margin: 0 !important;
+      flex-shrink: 0 !important;
     }
 
     .how-it-works-step {
-      width: 22px !important;
-      height: 22px !important;
-      font-size: 10px !important;
+      width: 18px !important;
+      height: 18px !important;
+      font-size: 9px !important;
+      top: -2px !important;
+      right: -2px !important;
+    }
+
+    .how-it-works-text {
+      flex: 1 !important;
     }
 
     .how-it-works-title {
-      font-size: 18px !important;
+      font-size: 15px !important;
+      margin-bottom: 4px !important;
     }
 
     .how-it-works-desc {
       font-size: 13px !important;
+      line-height: 1.4 !important;
     }
 
     /* Built by principals - 2 columns */
@@ -521,26 +527,50 @@ const globalStyles = `
       font-size: 14px !important;
     }
 
-    /* Footer */
+    /* Footer - compact mobile version */
     .footer-grid {
-      grid-template-columns: 1fr 1fr !important;
-      gap: 24px !important;
+      display: flex !important;
+      flex-wrap: wrap !important;
+      gap: 20px 32px !important;
+      justify-content: center !important;
+      text-align: center !important;
     }
 
     .footer-grid > div:first-child {
-      grid-column: 1 / -1 !important;
-      text-align: center !important;
+      display: none !important;
+    }
+
+    .footer-grid > div {
+      flex: 0 0 auto !important;
+    }
+
+    .footer-grid h4 {
+      font-size: 12px !important;
+      margin-bottom: 10px !important;
+    }
+
+    .footer-grid ul li {
+      margin-bottom: 6px !important;
+    }
+
+    .footer-grid ul li a {
+      font-size: 12px !important;
     }
 
     .footer-bottom {
       flex-direction: column !important;
-      gap: 12px !important;
+      gap: 8px !important;
       text-align: center;
+      font-size: 11px !important;
     }
 
     .footer-bottom > div {
       flex-direction: column !important;
-      gap: 8px !important;
+      gap: 6px !important;
+    }
+
+    footer.section-padding {
+      padding: 32px 16px 24px !important;
     }
 
     /* General spacing - more compact */
@@ -586,12 +616,15 @@ const globalStyles = `
     }
 
     .footer-grid {
-      grid-template-columns: 1fr !important;
-      text-align: center;
+      gap: 16px 24px !important;
     }
 
     .section-padding {
       padding: 40px 16px !important;
+    }
+
+    footer.section-padding {
+      padding: 32px 16px 20px !important;
     }
   }
 `;
