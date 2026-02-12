@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { colors } from '@/lib/content/base';
+import { useTheme } from '@/lib/theme';
 import type { FAQ } from '@/lib/content/types';
 
 // Feature type for the tabs
@@ -15,6 +16,7 @@ interface Feature {
 
 // Demo Form Component
 export function DemoForm() {
+  const { theme } = useTheme();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -27,10 +29,10 @@ export function DemoForm() {
       id="demo"
       style={{
         backgroundColor: colors.white,
-        borderRadius: '28px',
-        padding: '44px',
-        boxShadow: '0 30px 60px -15px rgba(107, 45, 60, 0.2), 0 10px 20px -10px rgba(107, 45, 60, 0.1)',
-        border: '1px solid rgba(107, 45, 60, 0.06)',
+        borderRadius: theme.radiusLarge,
+        padding: theme.cardPadding,
+        boxShadow: theme.shadowCard,
+        border: `1px solid rgba(107, 45, 60, ${theme.borderOpacity})`,
       }}
     >
       <h2
@@ -39,7 +41,7 @@ export function DemoForm() {
           fontWeight: 700,
           color: colors.burgundy,
           marginBottom: '8px',
-          fontFamily: '"Playfair Display", Georgia, serif',
+          fontFamily: theme.headingFont,
           letterSpacing: '-0.02em',
         }}
       >
@@ -57,11 +59,11 @@ export function DemoForm() {
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           style={{
             padding: '15px 18px',
-            borderRadius: '12px',
-            border: `1px solid rgba(107, 45, 60, 0.12)`,
+            borderRadius: theme.radiusSmall,
+            border: `1px solid rgba(107, 45, 60, ${theme.borderOpacity})`,
             fontSize: '15px',
             outline: 'none',
-            transition: 'all 0.2s',
+            transition: `all ${theme.animationFast}`,
             backgroundColor: 'rgba(250, 250, 247, 0.5)',
           }}
         />
@@ -72,11 +74,11 @@ export function DemoForm() {
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           style={{
             padding: '15px 18px',
-            borderRadius: '12px',
-            border: `1px solid rgba(107, 45, 60, 0.12)`,
+            borderRadius: theme.radiusSmall,
+            border: `1px solid rgba(107, 45, 60, ${theme.borderOpacity})`,
             fontSize: '15px',
             outline: 'none',
-            transition: 'all 0.2s',
+            transition: `all ${theme.animationFast}`,
             backgroundColor: 'rgba(250, 250, 247, 0.5)',
           }}
         />
@@ -87,11 +89,11 @@ export function DemoForm() {
           onChange={(e) => setFormData({ ...formData, school: e.target.value })}
           style={{
             padding: '15px 18px',
-            borderRadius: '12px',
-            border: `1px solid rgba(107, 45, 60, 0.12)`,
+            borderRadius: theme.radiusSmall,
+            border: `1px solid rgba(107, 45, 60, ${theme.borderOpacity})`,
             fontSize: '15px',
             outline: 'none',
-            transition: 'all 0.2s',
+            transition: `all ${theme.animationFast}`,
             backgroundColor: 'rgba(250, 250, 247, 0.5)',
           }}
         />
@@ -100,13 +102,13 @@ export function DemoForm() {
           onChange={(e) => setFormData({ ...formData, teachers: e.target.value })}
           style={{
             padding: '15px 18px',
-            borderRadius: '12px',
-            border: `1px solid rgba(107, 45, 60, 0.12)`,
+            borderRadius: theme.radiusSmall,
+            border: `1px solid rgba(107, 45, 60, ${theme.borderOpacity})`,
             fontSize: '15px',
             outline: 'none',
             backgroundColor: 'rgba(250, 250, 247, 0.5)',
             color: formData.teachers ? colors.charcoal : '#999',
-            transition: 'all 0.2s',
+            transition: `all ${theme.animationFast}`,
           }}
         >
           <option value="">Number of teachers</option>
@@ -122,14 +124,14 @@ export function DemoForm() {
             background: `linear-gradient(135deg, ${colors.gold} 0%, ${colors.goldLight} 100%)`,
             color: colors.white,
             padding: '17px 24px',
-            borderRadius: '12px',
+            borderRadius: theme.radiusSmall,
             border: 'none',
             fontSize: '16px',
             fontWeight: 600,
             cursor: 'pointer',
             marginTop: '10px',
-            transition: 'all 0.3s ease',
-            boxShadow: '0 6px 20px -4px rgba(201, 162, 39, 0.45)',
+            transition: `all ${theme.animationMedium} ease`,
+            boxShadow: theme.shadowButton,
           }}
         >
           Book My Demo →
@@ -158,12 +160,14 @@ interface FeatureTabsProps {
 }
 
 export function FeatureTabs({ features }: FeatureTabsProps) {
+  const { theme } = useTheme();
   const [activeFeature, setActiveFeature] = useState(0);
 
   return (
     <>
       {/* Feature Tabs */}
       <div
+        className="feature-tabs"
         style={{
           display: 'flex',
           justifyContent: 'center',
@@ -176,11 +180,11 @@ export function FeatureTabs({ features }: FeatureTabsProps) {
           <button
             key={i}
             onClick={() => setActiveFeature(i)}
-            className={activeFeature === i ? '' : 'hover-lift'}
+            className={`feature-tab ${activeFeature === i ? '' : 'hover-lift'}`}
             style={{
               padding: '14px 28px',
-              borderRadius: '100px',
-              border: activeFeature === i ? 'none' : '1px solid rgba(107, 45, 60, 0.1)',
+              borderRadius: theme.radiusPill,
+              border: activeFeature === i ? 'none' : `1px solid rgba(107, 45, 60, ${theme.borderOpacity})`,
               backgroundColor: activeFeature === i ? colors.burgundy : colors.white,
               color: activeFeature === i ? colors.white : colors.charcoal,
               fontSize: '14px',
@@ -189,8 +193,8 @@ export function FeatureTabs({ features }: FeatureTabsProps) {
               display: 'flex',
               alignItems: 'center',
               gap: '10px',
-              transition: 'all 0.3s ease',
-              boxShadow: activeFeature === i ? '0 8px 24px -6px rgba(107, 45, 60, 0.3)' : '0 2px 8px rgba(0,0,0,0.04)',
+              transition: `all ${theme.animationMedium} ease`,
+              boxShadow: activeFeature === i ? theme.shadowMedium : theme.shadowSoft,
             }}
           >
             <span style={{ fontSize: '18px' }}>{feature.icon}</span>
@@ -201,17 +205,17 @@ export function FeatureTabs({ features }: FeatureTabsProps) {
 
       {/* Active Feature Display */}
       <div
-        className="animate-fade-in"
+        className="animate-fade-in feature-content"
         style={{
           backgroundColor: colors.white,
-          borderRadius: '28px',
+          borderRadius: theme.radiusLarge,
           padding: '56px',
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
           gap: '72px',
           alignItems: 'center',
-          boxShadow: '0 8px 32px -8px rgba(107, 45, 60, 0.08)',
-          border: '1px solid rgba(107, 45, 60, 0.06)',
+          boxShadow: theme.shadowMedium,
+          border: `1px solid rgba(107, 45, 60, ${theme.borderOpacity})`,
         }}
       >
         <div>
@@ -222,7 +226,7 @@ export function FeatureTabs({ features }: FeatureTabsProps) {
               gap: '10px',
               backgroundColor: `${colors.burgundy}08`,
               padding: '10px 18px',
-              borderRadius: '100px',
+              borderRadius: theme.radiusPill,
               marginBottom: '20px',
             }}
           >
@@ -232,12 +236,13 @@ export function FeatureTabs({ features }: FeatureTabsProps) {
             </span>
           </div>
           <h3
+            className="feature-title"
             style={{
               fontSize: '34px',
               fontWeight: 700,
               color: colors.charcoal,
               marginBottom: '28px',
-              fontFamily: '"Playfair Display", Georgia, serif',
+              fontFamily: theme.headingFont,
               letterSpacing: '-0.02em',
             }}
           >
@@ -255,7 +260,7 @@ export function FeatureTabs({ features }: FeatureTabsProps) {
                   padding: '14px 0',
                   fontSize: '15px',
                   color: colors.charcoal,
-                  borderBottom: i < features[activeFeature].points.length - 1 ? '1px solid rgba(107, 45, 60, 0.06)' : 'none',
+                  borderBottom: i < features[activeFeature].points.length - 1 ? `1px solid rgba(107, 45, 60, ${theme.borderOpacity})` : 'none',
                   animationDelay: `${i * 0.1}s`,
                 }}
               >
@@ -282,14 +287,15 @@ export function FeatureTabs({ features }: FeatureTabsProps) {
           </ul>
         </div>
         <div
+          className="feature-image-placeholder"
           style={{
             background: `linear-gradient(135deg, ${colors.cream} 0%, ${colors.ivory} 100%)`,
-            borderRadius: '20px',
+            borderRadius: theme.radiusMedium,
             height: '420px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            border: '1px solid rgba(107, 45, 60, 0.06)',
+            border: `1px solid rgba(107, 45, 60, ${theme.borderOpacity})`,
             position: 'relative',
             overflow: 'hidden',
           }}
@@ -322,6 +328,7 @@ interface FAQAccordionProps {
 }
 
 export function FAQAccordion({ faqs }: FAQAccordionProps) {
+  const { theme } = useTheme();
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
   return (
@@ -332,13 +339,14 @@ export function FAQAccordion({ faqs }: FAQAccordionProps) {
           className="hover-lift"
           style={{
             backgroundColor: activeFaq === i ? 'rgba(250, 250, 247, 0.8)' : 'transparent',
-            borderRadius: '16px',
+            borderRadius: theme.radiusMedium,
             marginBottom: '8px',
-            transition: 'all 0.3s ease',
+            transition: `all ${theme.animationMedium} ease`,
           }}
         >
           <button
             onClick={() => setActiveFaq(activeFaq === i ? null : i)}
+            className="faq-question"
             style={{
               width: '100%',
               padding: '24px 28px',
@@ -349,17 +357,17 @@ export function FAQAccordion({ faqs }: FAQAccordionProps) {
               border: 'none',
               cursor: 'pointer',
               textAlign: 'left',
-              borderBottom: activeFaq === i ? 'none' : '1px solid rgba(107, 45, 60, 0.08)',
+              borderBottom: activeFaq === i ? 'none' : `1px solid rgba(107, 45, 60, ${theme.borderOpacity})`,
             }}
           >
             <span style={{
               fontSize: '17px',
               fontWeight: 600,
               color: activeFaq === i ? colors.burgundy : colors.charcoal,
-              fontFamily: '"Playfair Display", Georgia, serif',
+              fontFamily: theme.headingFont,
               letterSpacing: '-0.01em',
               paddingRight: '16px',
-              transition: 'color 0.2s',
+              transition: `color ${theme.animationFast}`,
             }}>
               {faq.question}
             </span>
@@ -370,13 +378,13 @@ export function FAQAccordion({ faqs }: FAQAccordionProps) {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                backgroundColor: activeFaq === i ? colors.gold : 'rgba(107, 45, 60, 0.08)',
+                backgroundColor: activeFaq === i ? colors.gold : `rgba(107, 45, 60, ${theme.borderOpacity})`,
                 color: activeFaq === i ? colors.white : colors.burgundy,
                 borderRadius: '50%',
                 fontSize: '20px',
                 fontWeight: 300,
                 transform: activeFaq === i ? 'rotate(45deg)' : 'none',
-                transition: 'all 0.3s ease',
+                transition: `all ${theme.animationMedium} ease`,
                 flexShrink: 0,
               }}
             >
@@ -385,7 +393,7 @@ export function FAQAccordion({ faqs }: FAQAccordionProps) {
           </button>
           {activeFaq === i && (
             <div
-              className="animate-fade-in"
+              className="animate-fade-in faq-answer"
               style={{
                 padding: '0 28px 28px',
                 fontSize: '15px',
@@ -409,6 +417,7 @@ interface RegionSelectorProps {
 }
 
 export function RegionSelector({ currentRegion }: RegionSelectorProps) {
+  const { theme } = useTheme();
   const regions = [
     { code: 'NY', label: 'New York (Danielson)' },
     { code: 'TX', label: 'Texas (T-TESS)' },
@@ -431,8 +440,8 @@ export function RegionSelector({ currentRegion }: RegionSelectorProps) {
         onChange={handleChange}
         style={{
           backgroundColor: 'transparent',
-          border: '1px solid rgba(255,255,255,0.2)',
-          borderRadius: '4px',
+          border: `1px solid rgba(255,255,255, ${theme.borderOpacityHover})`,
+          borderRadius: theme.radiusSmall,
           padding: '4px 8px',
           color: 'inherit',
           fontSize: '13px',
