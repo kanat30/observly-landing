@@ -1,191 +1,142 @@
-// Shared content and styles that don't change across frameworks
+// Shared content and tokens that don't change across frameworks.
+// Copy source: observly-gtm/02-channels/landing-page/PAGE_SPEC.md; every sentence must be in CLAIMS.md SAY.
 
-// Scholarly Warmth Color Palette (harmonized with app)
+import type { FAQ, FooterContent, FounderNote, Link, PricingContent, TrustContent } from './types';
+
+// Product tokens (observly-gtm/01-brand/BRAND_MINI.md §B2). Gold takes dark text only.
 export const colors = {
-  // Primary - Burgundy (from app)
-  burgundy: '#6B2D3C',
-  burgundyLight: '#8B4557',
-  burgundyDark: '#4A1F2A',
-  burgundyDeep: '#2D1219',
-  // Accent - Aged Gold (from app)
-  gold: '#C9A227',
-  goldLight: '#DFC45E',
-  goldDark: '#9A7818',
-  // Success
-  sage: '#22C55E',
-  sageLight: '#4ADE80',
-  // Backgrounds
+  burgundy: '#6B2D3C',      // primary[700]
+  burgundyHover: '#8B4557', // primary[600]
+  burgundyDark: '#4A1F2A',  // primary[800]
+  burgundyDeep: '#3D1A24',  // primary[900]
+  burgundyTint: '#F5E4E8',  // primary[100]
+  gold: '#D6B545',          // secondary[700]
+  goldDark: '#9A7818',      // secondary[800]
+  goldTint: '#F7EEC7',      // secondary[200]
+  goldWash: '#FEFCF5',      // secondary[50]
   ivory: '#FAFAF7',
-  cream: '#F5F4F0',
-  warmWhite: '#FFFEFB',
-  // Text
-  charcoal: '#1A1A1A',
-  charcoalLight: '#3D3D3D',
+  ivorySecondary: '#F5F4F0',
+  ivoryTertiary: '#EDECE6',
   white: '#FFFFFF',
+  text: '#1A1A1A',
+  textSecondary: '#52525B',
+  border: '#E4E4E7',
+  borderStrong: '#D4D4D8',
 };
 
-// Feature card colors for visual variety
-export const featureColors = {
-  voiceRecording: '#F5E8EB',
-  compliance: '#FCF7E3',
-  walkthrough: '#E8F5E9',
-  conference: '#F3E8FF',
+export const urls = {
+  app: 'https://app.observly.co',
+  signup: 'https://app.observly.co/signup',
+  privacy: 'https://app.observly.co/privacy',
+  terms: 'https://app.observly.co/terms',
+  appStore: 'https://apps.apple.com/app/id6758344428',
 };
 
-// Shared statistics that don't vary by framework
-export const sharedStats = {
-  timeSaved: {
-    before: 90,
-    after: 15,
-    label: 'Minutes saved per observation',
-  },
-  hoursPerYear: {
-    value: '100+',
-    label: 'Hours back per year',
-  },
-  feedbackTurnaround: {
-    value: '24hr',
-    label: 'Feedback turnaround',
-  },
+export const contact = {
+  phoneDisplay: '+1 646 421 8566',
+  phoneHref: 'tel:+16464218566',
+  email: 'kanat@observly.co',
 };
 
-// Feature details that stay the same across frameworks
-export const sharedFeatures = {
-  walkthrough: {
-    title: 'Quick Walkthroughs',
-    subtitle: 'Daily visits made easy',
-    icon: '👁️',
-    points: [
-      'Glow & Grow templates',
-      'Coverage tracking heatmap',
-      'Pattern reports across classrooms',
-      'Voice memo capture',
-    ],
-    image: '/images/walkthrough.png',
-  },
-  conference: {
-    title: 'Conference Agendas',
-    subtitle: 'AI-prepared talking points',
-    icon: '📋',
-    points: [
-      'Auto-generated from observations',
-      'Framework-aligned discussion points',
-      'Growth trend visualization',
-      'One-click export',
-    ],
-    image: '/images/conference.png',
-  },
-};
-
-// "Built by Principals" trust section - universal across all frameworks
-export const builtByPrincipals = {
-  title: 'Built by Principals, for Principals',
-  subtitle: 'Not a faceless company — designed by educators who understand your daily challenges.',
-  features: [
-    {
-      icon: '👤',
-      title: 'Founder-Led',
-      description: 'Created by a working principal who was frustrated with existing observation tools.',
-    },
-    {
-      icon: '🤝',
-      title: 'Principal Advisors',
-      description: 'Our founding advisors are active principals providing real feedback and input.',
-    },
-    {
-      icon: '📋',
-      title: 'Workflow-First Design',
-      description: 'Every feature is built around actual observation workflows — not just a tech demo.',
-    },
-    {
-      icon: '🔄',
-      title: 'Continuous Improvement',
-      description: 'Regular updates based on direct feedback from principals using the app daily.',
-    },
+export const nav: { links: Link[]; signIn: Link } = {
+  links: [
+    { label: 'How it works', href: '#how-it-works' },
+    { label: 'Growth', href: '#growth' },
+    { label: 'Pricing', href: '#pricing' },
+    { label: 'FAQ', href: '#faq' },
   ],
+  signIn: { label: 'Sign in', href: urls.app },
 };
 
-// Shared FAQ questions that are framework-agnostic
-export const sharedFAQs = [
-  {
-    question: 'How is this different from Edthena Observation Copilot?',
-    answer: "Edthena requires you to type notes first, then converts them to framework-aligned feedback. Observly records your voice while you observe — no typing required. Plus, we include compliance tracking, walkthrough mode, and conference agenda generation that Edthena doesn't offer.",
-  },
-  {
-    question: 'What data do you collect about students?',
-    answer: 'None. We only store teacher names and your observation notes. Audio recordings are transcribed and then deleted. No student data is ever collected or stored.',
-  },
-  {
-    question: 'Does it work without internet in classrooms?',
-    answer: "Yes! Observly is offline-first. You can record observations in any classroom, even without WiFi. Data syncs automatically when you're back online.",
-  },
-  {
-    question: 'How long is the free trial?',
-    answer: '30 days with full access to all features. No credit card required to start. We want you to experience the time savings before committing.',
-  },
-  {
-    question: 'Can I use this for informal walkthroughs too?',
-    answer: 'Absolutely. Our Quick Walkthrough mode is designed for daily classroom visits. Use the Glow & Grow template, track coverage across teachers, and identify patterns schoolwide.',
-  },
-];
+export const ctas = {
+  trial: { label: 'Start free trial', href: urls.signup },
+  trialMicrocopy: '14 days · card required, not charged · no approval',
+  // Shown when NEXT_PUBLIC_DEMO_VIDEO_URL is set; otherwise the walkthrough booking link is used.
+  demo: 'Watch the 90-second demo',
+  demoShort: 'Watch the demo',
+  book: 'Book a 20-minute walkthrough',
+};
 
-// Pricing tiers (structure stays same, specific features vary by framework)
-export const pricingTierBase = {
-  starter: {
-    name: 'Starter',
-    subtitle: 'Small schools',
-    price: '$199',
-    period: '/month',
-    annual: '$1,690/year',
-    cta: 'Start Free Trial',
-    popular: false,
-    baseFeatures: [
-      'Up to 30 teachers',
-      'Unlimited observations',
-      'Voice recording & transcription',
-    ],
+export const trust: TrustContent = {
+  title: 'Your voice. Your notes. Your call.',
+  points: [
+    'Your observations are private — not visible to colleagues or Observly staff.',
+    'The AI drafts; you confirm. Nothing reaches the teacher until you share it.',
+    'Students are not recorded by design: you dictate your own notes.',
+    'Audio is transcribed by Deepgram; analysis by OpenAI. Photos are never sent to the AI.',
+    'Built to support FERPA compliance and NY Ed Law 2-d. We sign the NY model DPA on request.',
+  ],
+  privacyLink: { label: 'Privacy policy', href: urls.privacy },
+};
+
+// PRODUCT_TRUTH §8: same features on every tier; tiers differ by seats and AI credits.
+export const pricing: PricingContent = {
+  title: 'Simple pricing. Every feature on every plan.',
+  rowLabels: {
+    monthly: 'Monthly',
+    annual: 'Annual',
+    seats: 'Seats',
+    credits: 'AI credits / yr',
   },
-  professional: {
-    name: 'Plus',
-    subtitle: 'Most schools',
-    price: '$399',
-    period: '/month',
-    annual: '$3,490/year',
-    cta: 'Start Free Trial',
-    popular: true,
-    baseFeatures: [
-      'Up to 60 teachers',
-      'Everything in Starter',
-      'Compliance calendar',
-      'Walkthrough mode',
-      'Conference agendas',
-      'Priority support',
-    ],
-  },
-  enterprise: {
-    name: 'Max',
-    subtitle: 'Large schools',
-    price: '$599',
-    period: '/month',
-    annual: '$4,990/year',
-    cta: 'Start Free Trial',
-    popular: false,
-    baseFeatures: [
-      'Unlimited teachers',
-      'Everything in Plus',
-      'Web dashboard',
-      'Analytics & reporting',
-      'Multiple admin accounts',
-      'Dedicated support',
-    ],
+  tiers: [
+    { name: 'Starter', monthly: '$199', annual: '$1,690/yr', seats: '1 principal or AP', credits: '6,000', featured: false },
+    { name: 'Plus', badge: 'Most schools', monthly: '$399', annual: '$3,490/yr', seats: '5 — principal + APs', credits: '24,000', featured: true },
+    { name: 'Max', monthly: '$599', annual: '$4,990/yr', seats: '10', credits: '50,000', featured: false },
+  ],
+  note: 'A typical observation uses about 20 credits; a walkthrough 10. Annual plans run on the school year. District pricing on request.',
+  trialBox: {
+    title: 'Free trial',
+    body: '14 days. 2 observations, 3 walkthroughs, 5-minute recordings. Card required, not charged. No approval needed.',
   },
 };
 
-// ROI calculator text
-export const roiExample = {
-  text: 'A school with 40 teachers doing 80 observations/year saves',
-  hoursSaved: '140+ hours annually',
-  valueText: "that's over",
-  dollarValue: '$10,000',
-  suffix: 'in principal time.',
+// FAQ answers from POSITIONING §7. Questions reworded where the spec's wording hit CLAIMS NEVER SAY.
+export const sharedFAQs = {
+  students: {
+    question: 'Does Observly record my students?',
+    answer:
+      'Not by design. You dictate your own notes; students are almost never captured. Teacher speech is incidental unless the teacher chooses to wear a mic.',
+  },
+  aiRating: {
+    question: 'Is the AI rating my teachers?',
+    answer:
+      "No. It drafts evidence and suggests a rating. Nothing reaches the teacher until you share it, and ratings only once you confirm them. Advance Mode won't copy an unconfirmed rating.",
+  },
+  whoSees: {
+    question: 'Who can see my observations?',
+    answer: 'Only you. Not your AP, not your principal, not Observly.',
+  },
+  connection: {
+    question: 'Do I need a connection?',
+    answer:
+      'Walkthroughs work fully offline. Formal and informal observations need a connection to start; everything syncs automatically.',
+  },
+  devices: {
+    question: 'Which devices does it run on?',
+    answer: 'iPhone and web (any laptop browser).',
+  },
+  trial: {
+    question: "What's in the free trial?",
+    answer: '14 days, 2 observations, 3 walkthroughs. Card required, not charged.',
+  },
+} satisfies Record<string, FAQ>;
+
+export const founder: FounderNote = {
+  sentences: [
+    "I'm Kanat. I run after-school programs in NYC public schools, and I built Observly with NYC principals.",
+    'I onboard every new school personally.',
+  ],
+  signature: 'Kanat, founder',
+};
+
+export const finalCta = {
+  title: 'Every observation becomes a growth conversation.',
+};
+
+export const footer: FooterContent = {
+  privacy: { label: 'Privacy', href: urls.privacy },
+  terms: { label: 'Terms', href: urls.terms },
+  phone: { label: contact.phoneDisplay, href: contact.phoneHref },
+  email: { label: contact.email, href: `mailto:${contact.email}` },
+  appStore: { label: 'Download on the App Store', href: urls.appStore },
 };

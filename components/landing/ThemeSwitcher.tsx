@@ -22,7 +22,7 @@ export function ThemeSwitcher() {
       {/* Label */}
       <div
         style={{
-          backgroundColor: colors.charcoal,
+          backgroundColor: colors.text,
           color: colors.white,
           padding: '8px 14px',
           borderRadius: theme.radiusSmall,
@@ -30,7 +30,6 @@ export function ThemeSwitcher() {
           fontWeight: 600,
           letterSpacing: '0.05em',
           textTransform: 'uppercase',
-          fontFamily: '"JetBrains Mono", monospace',
           boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
         }}
       >
@@ -51,7 +50,6 @@ export function ThemeSwitcher() {
           cursor: 'pointer',
           boxShadow: theme.shadowCard,
           transition: `all ${theme.animationMedium} ease`,
-          fontFamily: '"DM Sans", sans-serif',
         }}
       >
         {/* Toggle Track */}
@@ -59,7 +57,7 @@ export function ThemeSwitcher() {
           style={{
             width: '52px',
             height: '28px',
-            backgroundColor: mode === 'elegant' ? colors.burgundy : colors.charcoal,
+            backgroundColor: mode === 'elegant' ? colors.burgundy : colors.text,
             borderRadius: '14px',
             position: 'relative',
             transition: `background-color ${theme.animationMedium} ease`,
@@ -87,7 +85,7 @@ export function ThemeSwitcher() {
             style={{
               fontSize: '13px',
               fontWeight: 600,
-              color: colors.charcoal,
+              color: colors.text,
             }}
           >
             {mode === 'elegant' ? 'Elegant' : 'Solid'}
@@ -95,7 +93,7 @@ export function ThemeSwitcher() {
           <span
             style={{
               fontSize: '11px',
-              color: colors.charcoalLight,
+              color: colors.textSecondary,
             }}
           >
             Click to switch
@@ -107,15 +105,15 @@ export function ThemeSwitcher() {
       <div
         style={{
           fontSize: '10px',
-          color: colors.charcoalLight,
+          color: colors.textSecondary,
           textAlign: 'right',
           maxWidth: '160px',
           lineHeight: 1.4,
         }}
       >
         {mode === 'elegant'
-          ? 'Warm, serif headlines, soft shadows'
-          : 'Sharp, sans-serif, structured look'}
+          ? 'Rounder corners, soft shadows'
+          : 'Sharper corners, structured look'}
       </div>
     </div>
   );

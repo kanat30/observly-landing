@@ -46,9 +46,9 @@ export const themes: Record<ThemeMode, ThemeConfig> = {
     name: 'elegant',
     label: 'Elegant',
 
-    // Typography - Serif headlines
-    headingFont: '"Playfair Display", Georgia, serif',
-    bodyFont: '"DM Sans", -apple-system, sans-serif',
+    // Typography - Inter throughout (BRAND_MINI B3)
+    headingFont: 'var(--font-inter), -apple-system, system-ui, sans-serif',
+    bodyFont: 'var(--font-inter), -apple-system, system-ui, sans-serif',
 
     // Border radius - Very rounded
     radiusSmall: '12px',
@@ -85,9 +85,9 @@ export const themes: Record<ThemeMode, ThemeConfig> = {
     name: 'solid',
     label: 'Solid',
 
-    // Typography - Sans-serif throughout (more tech/SaaS)
-    headingFont: '"DM Sans", -apple-system, sans-serif',
-    bodyFont: '"DM Sans", -apple-system, sans-serif',
+    // Typography - Inter throughout (BRAND_MINI B3)
+    headingFont: 'var(--font-inter), -apple-system, system-ui, sans-serif',
+    bodyFont: 'var(--font-inter), -apple-system, system-ui, sans-serif',
 
     // Border radius - More structured
     radiusSmall: '8px',

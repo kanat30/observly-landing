@@ -5,7 +5,6 @@ import { getFrameworkForState, DEFAULT_FRAMEWORK } from './frameworks';
 import { danielsonContent } from './variants/danielson';
 import { ttessContent } from './variants/ttess';
 import { cstpContent } from './variants/cstp';
-import { marzanoContent } from './variants/marzano';
 import { genericContent } from './variants/generic';
 
 // Framework content map
@@ -13,9 +12,11 @@ const CONTENT_MAP: Record<FrameworkId, FrameworkContent> = {
   danielson: danielsonContent,
   ttess: ttessContent,
   cstp: cstpContent,
-  marzano: marzanoContent,
   generic: genericContent,
 };
+
+// Only these variants may be served. NYC first (DECISIONS); the rest are kept, not served.
+const SERVED_FRAMEWORKS: FrameworkId[] = ['danielson'];
 
 /**
  * Get content for a given state code
@@ -37,20 +38,17 @@ export function getContentForFramework(frameworkId: FrameworkId): FrameworkConte
 }
 
 /**
- * Get content based on region header value (set by middleware)
- * Region can be a state code (NY, TX) or framework ID (danielson, ttess)
+ * Get content based on region header value (set by middleware).
+ * Falls back to the default framework for anything that isn't served.
  * @param region - Region value from x-observly-region header
  * @returns Framework-specific content
  */
 export function getContentForRegion(region: string): FrameworkContent {
-  // Check if it's a framework ID first
   const lowerRegion = region.toLowerCase() as FrameworkId;
-  if (lowerRegion in CONTENT_MAP) {
-    return CONTENT_MAP[lowerRegion];
-  }
-
-  // Otherwise treat as state code
-  return getContentForState(region);
+  const frameworkId = lowerRegion in CONTENT_MAP ? lowerRegion : getFrameworkForState(region);
+  return SERVED_FRAMEWORKS.includes(frameworkId)
+    ? CONTENT_MAP[frameworkId]
+    : CONTENT_MAP[DEFAULT_FRAMEWORK];
 }
 
 // Re-export types and utilities

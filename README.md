@@ -1,168 +1,91 @@
 # Observly Landing Page
 
-A high-converting landing page for Observly, built with Next.js 14 and React.
+Marketing site for observly.co (Next.js 15, deployed on Vercel). The web app lives at app.observly.co.
+
+## Source of truth
+
+Copy and design come from the GTM repo (`observly-gtm`), not from this README:
+
+- **Page copy:** `02-channels/landing-page/PAGE_SPEC.md` (NYC / Danielson variant)
+- **Claims:** `00-foundation/CLAIMS.md` governs every sentence on the site. If a line isn't in SAY, it doesn't go on the page. Nothing in NEVER SAY may appear anywhere in this repo.
+- **Brand:** `01-brand/BRAND_MINI.md` (voice A2, product tokens B2)
+
+## Page structure
+
+1. Hero — "From classroom visit to teacher conference in one afternoon." Start free trial + secondary CTA, four trust chips, iPhone + laptop screenshots
+2. October IPC strip — hidden automatically from 2026-11-15 (New York time)
+3. How it works — Dictate · Draft · Confirm · Share
+4. Pillar 1 — same-day feedback, conference with the teacher's voice in it
+5. Pillar 2 — goals that travel through the year
+6. Pillar 3 — Built for NYC Advance (compliance tracker, Advance Mode, MOTP, walkthroughs, PDF export)
+7. Trust block
+8. Pricing — Starter / Plus / Max; rows: monthly, annual, seats, AI credits; same features on every tier; trial box
+9. FAQ
+10. Founder note
+11. Final CTA
+
+Primary CTA everywhere: **Start free trial** → https://app.observly.co/signup
+
+## Content architecture
+
+```
+lib/content/
+├── types.ts              # Content types (hero, seasonal strip, pillars, trust, pricing, founder note…)
+├── base.ts               # Shared: product tokens, URLs, contact, trust, pricing, shared FAQs, founder note
+├── frameworks.ts         # State → framework map (not used for serving)
+├── index.ts              # Resolver; only `danielson` is served
+└── variants/
+    ├── danielson.ts      # NYC DOE — the live page, plus screenshot slot filenames
+    ├── ttess.ts          # Not served; mirrors the NYC copy
+    ├── cstp.ts           # Not served; mirrors the NYC copy
+    └── generic.ts        # Not served; mirrors the NYC copy
+```
+
+`middleware.ts` pins every visitor to NY. Geo headers, `?region=` and the region cookie are ignored. The other variant files are kept but not served; don't add state-specific copy to them before it's in CLAIMS.md.
+
+## Routes
+
+| Route | What it does |
+|---|---|
+| `/` | Landing page |
+| `/trial` | Redirects to https://app.observly.co/signup (the iPhone app's "request trial" opens observly.co/trial) |
+
+Footer links: privacy → https://app.observly.co/privacy, terms → https://app.observly.co/terms, support +1 646 421 8566, kanat@observly.co, App Store.
+
+## Screenshots
+
+Slots show a labelled placeholder until the PNG exists. Drop the files into `public/screenshots/` with the exact names listed in `public/screenshots/README.md`:
+
+`hero-iphone-recording.png` · `hero-laptop-review.png` · `growth-page-phone.png` · `conference-agenda-cards.png` · `goal-thread-web.png` · `compliance-tracker-web.png` · `advance-mode-checklist.png`
 
 ## Design
 
-- **Color Palette:** "Midnight Academic" 
-  - Deep Ocean Blue (#1B3A4B) - Primary
-  - Sage Green (#4A7C28) - Success/Secondary
-  - Warm Copper (#B87333) - Accent
-  - Cream (#FAF8F5) - Background
-  
-- **Typography:**
-  - Fraunces - Headlines (serif, distinctive)
-  - Source Serif 4 - Body text (readable, professional)
+- Product tokens from BRAND_MINI §B2: burgundy `#6B2D3C` primary, ivory `#FAFAF7` background, gold `#D6B545` accent with dark text only (never gold text on light backgrounds)
+- Type: Inter (via `next/font`)
+- Logos in `public/logo/`: `observly-logo-trim.png` (dark wordmark, light backgrounds) in the header; `logo-dark-trim.png` (cream wordmark) on the burgundy footer. The `-trim` files are cropped from the original 1536×1024 canvases, which are kept alongside.
+- Styles live in `app/layout.tsx`; radius and shadow follow the `data-theme` set by `lib/theme`
 
-## Structure
+## Environment variables
 
-```
-Hero Section
-├── Headline: "Complete observations in 15 minutes, not 2 hours"
-├── Stats: 90→15 min, 100+ hours saved, 24hr feedback
-├── Trust badges: Danielson, Advance Compatible, No Student Data
-└── Demo booking form
+| Variable | Purpose |
+|---|---|
+| `NEXT_PUBLIC_GA_ID` | GA4 measurement ID. No analytics load when unset |
+| `NEXT_PUBLIC_DEMO_VIDEO_URL` | 90-second demo video. When set, the secondary CTA becomes "Watch the 90-second demo" → `#demo` |
+| `NEXT_PUBLIC_BOOKING_URL` | Calendar link for "Book a 20-minute walkthrough" (used while there's no demo video). Falls back to an email to kanat@observly.co |
 
-Problem/Solution Section
-├── Before/After comparison
-└── Pain point → solution mapping
+## Analytics (GA4)
 
-Features Section (Tabbed)
-├── Voice Recording
-├── Compliance Calendar
-├── Quick Walkthroughs
-└── Conference Agendas
+| Event | When | Params |
+|---|---|---|
+| `cta_trial_click` | Any "Start free trial" click | `location` (nav, hero, seasonal_strip, pricing_starter, pricing_plus, pricing_max, pricing_trial_box, founder, final) |
+| `demo_play` | First play of the demo video | — |
+| `pricing_view` | Pricing section first scrolled into view | — |
+| `faq_open` | An FAQ item is opened | `question` |
 
-How It Works
-├── Step 1: Record
-├── Step 2: Review
-└── Step 3: Export
-
-Testimonials
-└── 3 principal quotes (placeholder)
-
-Pricing
-├── Starter: $200/mo ($2,400/yr) - up to 30 teachers
-├── Professional: $350/mo ($4,200/yr) - up to 60 teachers (Popular)
-└── Enterprise: $500/mo ($6,000/yr) - unlimited
-
-FAQ Section
-└── 6 common questions
-
-Final CTA
-└── "Ready to reclaim your time?"
-
-Footer
-```
-
-## Quick Start
+## Development
 
 ```bash
-# Install dependencies
 npm install
-
-# Run development server
-npm run dev
-
-# Build for production
+npm run dev     # http://localhost:3000
 npm run build
 ```
-
-## Deploy to Vercel
-
-1. Push this folder to a GitHub repository
-2. Go to [vercel.com](https://vercel.com)
-3. Import your repository
-4. Deploy (zero configuration needed)
-
-Or use Vercel CLI:
-
-```bash
-npm i -g vercel
-vercel
-```
-
-## TODO Before Launch
-
-### Content
-- [ ] Replace placeholder testimonials with real quotes from founding advisors
-- [ ] Add actual app screenshots to features section
-- [ ] Record 90-second demo video
-- [ ] Write privacy policy page
-- [ ] Write terms of service page
-
-### Images Needed
-- [ ] `/public/images/voice-recording.png` - App screenshot of recording
-- [ ] `/public/images/compliance.png` - Compliance dashboard screenshot
-- [ ] `/public/images/walkthrough.png` - Walkthrough mode screenshot
-- [ ] `/public/images/conference.png` - Conference agenda screenshot
-- [ ] `/public/images/testimonial-1.jpg` - Principal photo (or use initials)
-- [ ] `/public/images/testimonial-2.jpg`
-- [ ] `/public/images/testimonial-3.jpg`
-- [ ] `/public/images/og-image.png` - Open Graph image (1200x630)
-- [ ] `/public/favicon.ico`
-
-### Integrations
-- [ ] Connect form to email service (Resend, SendGrid, etc.)
-- [ ] Add Google Analytics / Plausible
-- [ ] Add Calendly or Cal.com for demo booking
-- [ ] Set up Stripe checkout links in pricing CTAs
-
-### SEO
-- [ ] Update meta description
-- [ ] Add Open Graph image
-- [ ] Create sitemap.xml
-- [ ] Submit to Google Search Console
-
-## Form Integration Options
-
-### Option 1: Formspree (Easiest)
-```jsx
-<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-```
-
-### Option 2: Resend API Route
-Create `/app/api/demo/route.ts`:
-```typescript
-import { Resend } from 'resend';
-
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-export async function POST(request: Request) {
-  const { name, email, school, teachers } = await request.json();
-  
-  await resend.emails.send({
-    from: 'Observly <noreply@observly.app>',
-    to: 'you@youremail.com',
-    subject: `New Demo Request: ${school}`,
-    html: `<p>Name: ${name}</p><p>Email: ${email}</p><p>School: ${school}</p><p>Teachers: ${teachers}</p>`,
-  });
-  
-  return Response.json({ success: true });
-}
-```
-
-### Option 3: Cal.com Embed
-Replace form with embedded Cal.com widget for instant scheduling.
-
-## Conversion Optimization Notes
-
-1. **Single CTA focus:** "Book a Demo" throughout
-2. **Social proof:** Stats in hero, testimonials, trust badges
-3. **Address objections:** FAQ covers Edthena comparison, data privacy, offline mode
-4. **Urgency:** "30-day free trial, no credit card required"
-5. **ROI calculator:** Shows dollar value of time saved
-
-## Mobile Responsive
-
-The page is fully responsive. Key breakpoints:
-- Desktop: 1024px+
-- Tablet: 768px - 1023px
-- Mobile: < 768px
-
-## Performance Tips
-
-1. Optimize images with Next.js Image component (when real images added)
-2. Use WebP format for screenshots
-3. Lazy load testimonial images
-4. Consider adding ISR for any dynamic content

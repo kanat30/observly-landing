@@ -2,7 +2,7 @@
 
 import { FrameworkId, StateCode } from './types';
 
-// Primary frameworks by state
+// Primary frameworks by state. Not used for serving: middleware.ts pins every visitor to NY.
 // States not listed will use 'generic' framework
 export const STATE_FRAMEWORK_MAP: Record<StateCode, FrameworkId> = {
   // Danielson Framework states
@@ -21,13 +21,6 @@ export const STATE_FRAMEWORK_MAP: Record<StateCode, FrameworkId> = {
   // CSTP (California)
   CA: 'cstp',
 
-  // Marzano Framework states
-  FL: 'marzano',
-  OK: 'marzano',
-  SC: 'marzano',
-  NE: 'marzano',
-  ID: 'marzano',
-
   // 5D+ (Washington, Oregon) - mapped to generic for now
   WA: 'generic',
   OR: 'generic',
@@ -38,6 +31,11 @@ export const STATE_FRAMEWORK_MAP: Record<StateCode, FrameworkId> = {
   AZ: 'generic',
 
   // All other states default to generic
+  FL: 'generic',
+  OK: 'generic',
+  SC: 'generic',
+  NE: 'generic',
+  ID: 'generic',
   AL: 'generic',
   AK: 'generic',
   CO: 'generic',
@@ -97,12 +95,6 @@ export const FRAMEWORK_METADATA: Record<FrameworkId, FrameworkMeta> = {
     name: 'California Standards for the Teaching Profession',
     shortName: 'CSTP',
     evaluationSystem: 'CALPADS',
-  },
-  marzano: {
-    id: 'marzano',
-    name: 'Marzano Framework',
-    shortName: 'Marzano',
-    evaluationSystem: 'varies by district',
   },
   generic: {
     id: 'generic',
