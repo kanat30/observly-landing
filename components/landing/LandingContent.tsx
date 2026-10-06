@@ -236,13 +236,20 @@ export function LandingContent({ content, demoVideoUrl, bookingUrl, showSeasonal
           </div>
         </section>
 
-        {/* 10. Founder note */}
-        <section className="section">
+        {/* 10. Why we built Observly: origin, founding principles, team onboarding */}
+        <section id="why" className="section">
           <div className="container narrow founder">
-            <blockquote>
-              <p>{founder.sentences.join(' ')}</p>
-              <footer>— {founder.signature}</footer>
-            </blockquote>
+            <h2>{founder.title}</h2>
+            <p className="founder-origin">{founder.origin}</p>
+            <ol className="principles">
+              {founder.principles.map((principle) => (
+                <li key={principle.title}>
+                  <h3>{principle.title}</h3>
+                  <p>{principle.body}</p>
+                </li>
+              ))}
+            </ol>
+            <p className="founder-onboarding">{founder.onboarding}</p>
             <div className="cta-row">
               <TrialLink location="founder" />
               <a href={footer.email.href} className="text-link">or email {contact.email}</a>

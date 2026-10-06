@@ -86,9 +86,17 @@ export interface FAQ {
   answer: string;
 }
 
+export interface Principle {
+  title: string;
+  body: string;
+}
+
+// "Why we built Observly": origin, founding principles, team onboarding.
 export interface FounderNote {
-  sentences: string[];
-  signature: string;
+  title: string;
+  origin: string;
+  principles: Principle[];
+  onboarding: string;
 }
 
 export interface FooterContent {

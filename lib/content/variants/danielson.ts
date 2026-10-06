@@ -32,14 +32,14 @@ export const danielsonContent: FrameworkContent = {
   hero: {
     eyebrow: 'Built for NYC principals on Advance',
     title: 'From classroom visit to teacher conference in one afternoon.',
-    sub: "Dictate what you see on your iPhone. Observly drafts the evidence and a suggested rating for each component, tracks every teacher's goals through the year, and lets you share with the teacher the same day.",
+    sub: "Dictate on your iPhone. Observly drafts the evidence, tracks every teacher's goals, and lets you share the same day.",
     trustChips: ['NYC DOE 8 components', 'Danielson 22', 'Built for Advance', 'Private to you'],
     screenshots: [screenshots.heroIphoneRecording, screenshots.heroLaptopReview],
   },
 
   seasonalStrip: {
-    line: 'Running IPCs this month? Record them in Observly — it drafts the goals and agreements, and every observation this year tracks them.',
-    button: 'Start free trial — and Kanat will onboard you personally.',
+    line: "Running IPCs? Record them in Observly — it drafts the goals and tracks them all year. We'll onboard you personally.",
+    button: 'Start free trial',
     hideOn: '2026-11-15',
   },
 
@@ -48,22 +48,22 @@ export const danielsonContent: FrameworkContent = {
     steps: [
       {
         title: 'Dictate.',
-        body: 'Open the teacher, tap record, say what you see — like a voicemail to yourself. Bookmark moments, add a photo.',
+        body: 'Tap record and say what you see, like a voicemail to yourself. Bookmark moments, add photos.',
         screenshot: screenshots.heroIphoneRecording,
       },
       {
         title: 'Draft.',
-        body: 'Observly transcribes and drafts evidence, a summary and a suggested rating for each NYC DOE component. Every rating stays a suggestion until you confirm it.',
+        body: 'Observly drafts evidence and a summary for each NYC DOE component.',
         screenshot: screenshots.heroLaptopReview,
       },
       {
-        title: 'Confirm.',
-        body: 'Review on your laptop. Edit anything. Confirm the ratings you agree with — nothing reaches the teacher until you share it, and ratings only once you confirm them.',
+        title: 'Review.',
+        body: 'Review on your laptop, edit anything and set every rating yourself.',
         screenshot: screenshots.heroLaptopReview,
       },
       {
         title: 'Share.',
-        body: 'Send the teacher their Growth Page link — no account needed. They reflect on the feedback before you meet. Observly drafts the conference agenda and the calendar invite.',
+        body: 'Send the teacher their Growth Page link — no account needed. They reflect before you meet.',
         screenshot: screenshots.growthPagePhone,
       },
     ],
@@ -73,11 +73,11 @@ export const danielsonContent: FrameworkContent = {
   pillars: [
     {
       id: 'conference',
-      title: "Feedback the same day. A conference with the teacher's voice in it.",
+      title: "Same-day feedback. A conference with the teacher's voice.",
       items: [
-        { body: 'Share with the teacher the same day — one link, no account needed.' },
-        { body: 'The teacher reads the evidence, acknowledges their goals and leaves reflections before the conference.' },
-        { body: 'Observly drafts a 30-minute agenda: reflection questions, strengths, growth areas, action steps — and sends the calendar invite.' },
+        { body: 'Share with the teacher the same day: one link, no account needed.' },
+        { body: 'Teachers read the evidence and reflect before the conference.' },
+        { body: 'Observly drafts a 30-minute agenda and the calendar invite.' },
       ],
       screenshots: [screenshots.growthPagePhone, screenshots.conferenceAgendaCards],
     },
@@ -85,10 +85,10 @@ export const danielsonContent: FrameworkContent = {
       id: 'goals',
       title: 'September goals, alive in March.',
       items: [
-        { body: "Record the IPC; Observly drafts the teacher's goals and your agreements for you to confirm." },
-        { body: 'Set up to five school goals. Every observation is read against them; Observly surfaces "goal moments" for you to review.' },
-        { body: 'The teacher sees their goals and progress on the same Growth Page as their feedback. Discuss each goal there.' },
-        { body: "New school year rolls last year's goals forward for review." },
+        { body: "Record the IPC; Observly drafts the teacher's goals for you to confirm." },
+        { body: 'Every observation is read against up to five school goals, with "goal moments" to review.' },
+        { body: 'Discuss each goal with the teacher on their Growth Page.' },
+        { body: "Last year's goals roll forward each new school year." },
       ],
       screenshots: [screenshots.goalThreadWeb],
     },
@@ -98,11 +98,11 @@ export const danielsonContent: FrameworkContent = {
       items: [
         {
           title: 'Compliance tracker.',
-          body: 'IPC, fall, spring and summative windows; the 10-school-day feedback deadline and the evaluator form deadline; green / yellow / red per teacher; required counts by tenure and rating; reminder emails. It keeps Advance deadlines in view.',
+          body: 'Every Advance window and the 10-school-day feedback deadline, with green / yellow / red per teacher and reminder emails.',
         },
-        { title: 'Advance Mode.', body: 'Copies your confirmed write-up into the Advance form, field by field.' },
+        { title: 'Advance Mode.', body: 'Copies your confirmed write-up into Advance, field by field.' },
         { title: 'MOTP score', body: 'on every observation.' },
-        { title: 'Walkthroughs.', body: '5-minute visits, fully offline, glow / grow notes and a feedback email.' },
+        { title: 'Walkthroughs.', body: '5-minute visits that work fully offline, with glow / grow notes.' },
         { title: 'PDF export.', body: '' },
       ],
       screenshots: [screenshots.complianceTrackerWeb, screenshots.advanceModeChecklist],
@@ -117,20 +117,12 @@ export const danielsonContent: FrameworkContent = {
     sharedFAQs.aiRating,
     {
       question: 'Does it push to Advance?',
-      answer: 'It copies your confirmed write-up field by field, in Advance form order. There is no direct integration.',
+      answer: "It copies your confirmed write-up into Advance, field by field. There's no direct integration.",
     },
     sharedFAQs.whoSees,
     {
       question: 'Do you sign a DPA?',
-      answer:
-        "We're built to support FERPA compliance and NY Ed Law 2-d, and we sign the NY model DPA on request. We don't claim DOE approval.",
-    },
-    sharedFAQs.connection,
-    sharedFAQs.devices,
-    sharedFAQs.trial,
-    {
-      question: 'Which frameworks?',
-      answer: 'NYC DOE 8 components (MOTP score included) and Danielson 22.',
+      answer: "Yes — the NY model DPA, on request. We're built to support FERPA compliance and NY Ed Law 2-d.",
     },
   ],
 

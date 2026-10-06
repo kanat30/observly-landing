@@ -201,9 +201,18 @@ const globalStyles = `
   .faq-item[open] summary::after { content: '−'; }
   .faq-item p { padding: 0 20px 20px; color: var(--text-2); }
 
-  /* Founder */
-  .founder blockquote { font-size: 22px; line-height: 1.5; margin-bottom: 28px; padding-left: 24px; border-left: 4px solid var(--burgundy); }
-  .founder blockquote footer { margin-top: 12px; font-size: 16px; font-weight: 600; color: var(--burgundy); }
+  /* Why we built Observly */
+  .founder-origin { font-size: 20px; line-height: 1.55; margin-bottom: 32px; padding-left: 24px; border-left: 4px solid var(--burgundy); }
+  .principles { list-style: none; counter-reset: principle; display: grid; gap: 20px; margin-bottom: 32px; }
+  .principles li { counter-increment: principle; position: relative; padding-left: 48px; }
+  .principles li::before {
+    content: counter(principle); position: absolute; left: 0; top: 0;
+    display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px;
+    border-radius: 50%; background: var(--burgundy-tint); color: var(--burgundy); font-size: 14px; font-weight: 700;
+  }
+  .principles h3 { margin-bottom: 4px; }
+  .principles p { color: var(--text-2); }
+  .founder-onboarding { font-size: 18px; font-weight: 600; color: var(--burgundy); margin-bottom: 24px; }
   .founder .cta-row { align-items: center; }
 
   .final-cta { text-align: center; }
@@ -242,7 +251,7 @@ const globalStyles = `
     .steps { grid-template-columns: 1fr; }
     .step .shot-phone, .step .shot-laptop { aspect-ratio: 16 / 10; }
     .cta-row > *, .cta-row .btn { width: 100%; }
-    .founder blockquote { font-size: 19px; }
+    .founder-origin { font-size: 18px; }
     .footer-inner { flex-direction: column; align-items: flex-start; }
   }
 

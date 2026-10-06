@@ -44,6 +44,7 @@ export const nav: { links: Link[]; signIn: Link } = {
     { label: 'Growth', href: '#growth' },
     { label: 'Pricing', href: '#pricing' },
     { label: 'FAQ', href: '#faq' },
+    { label: 'Why Observly', href: '#why' },
   ],
   signIn: { label: 'Sign in', href: urls.app },
 };
@@ -52,9 +53,9 @@ export const ctas = {
   trial: { label: 'Start free trial', href: urls.signup },
   trialMicrocopy: '14 days · card required, not charged · no approval',
   // Shown when NEXT_PUBLIC_DEMO_VIDEO_URL is set; otherwise the walkthrough booking link is used.
-  demo: 'Watch the 90-second demo',
+  demo: 'Watch the demo',
   demoShort: 'Watch the demo',
-  book: 'Book a 20-minute walkthrough',
+  book: 'Book a walkthrough',
 };
 
 export const trust: TrustContent = {
@@ -62,16 +63,16 @@ export const trust: TrustContent = {
   points: [
     'Your observations are private — not visible to colleagues or Observly staff.',
     'The AI drafts; you confirm. Nothing reaches the teacher until you share it.',
-    'Students are not recorded by design: you dictate your own notes.',
-    'Audio is transcribed by Deepgram; analysis by OpenAI. Photos are never sent to the AI.',
-    'Built to support FERPA compliance and NY Ed Law 2-d. We sign the NY model DPA on request.',
+    'By design, students aren\'t recorded — you dictate your own notes.',
+    'Audio transcribed by Deepgram, analyzed by OpenAI. Photos never go to the AI.',
+    'Built to support FERPA compliance and NY Ed Law 2-d. NY model DPA on request.',
   ],
   privacyLink: { label: 'Privacy policy', href: urls.privacy },
 };
 
 // PRODUCT_TRUTH §8: same features on every tier; tiers differ by seats and AI credits.
 export const pricing: PricingContent = {
-  title: 'Simple pricing. Every feature on every plan.',
+  title: 'Every feature on every plan.',
   rowLabels: {
     monthly: 'Monthly',
     annual: 'Annual',
@@ -83,10 +84,10 @@ export const pricing: PricingContent = {
     { name: 'Plus', badge: 'Most schools', monthly: '$399', annual: '$3,490/yr', seats: '5 — principal + APs', credits: '24,000', featured: true },
     { name: 'Max', monthly: '$599', annual: '$4,990/yr', seats: '10', credits: '50,000', featured: false },
   ],
-  note: 'A typical observation uses about 20 credits; a walkthrough 10. Annual plans run on the school year. District pricing on request.',
+  note: 'An observation uses about 20 credits, a walkthrough 10. Annual plans run on the school year. District pricing on request.',
   trialBox: {
     title: 'Free trial',
-    body: '14 days. 2 observations, 3 walkthroughs, 5-minute recordings. Card required, not charged. No approval needed.',
+    body: '14 days: 2 observations, 3 walkthroughs, 5-minute recordings. Card required, not charged.',
   },
 };
 
@@ -95,38 +96,41 @@ export const sharedFAQs = {
   students: {
     question: 'Does Observly record my students?',
     answer:
-      'Not by design. You dictate your own notes; students are almost never captured. Teacher speech is incidental unless the teacher chooses to wear a mic.',
+      'Not by design. You dictate your own notes, so students are almost never captured. Teacher speech is incidental unless they wear a mic.',
   },
   aiRating: {
     question: 'Is the AI rating my teachers?',
     answer:
-      "No. It drafts evidence and suggests a rating. Nothing reaches the teacher until you share it, and ratings only once you confirm them. Advance Mode won't copy an unconfirmed rating.",
+      'No. It drafts the evidence; you set every rating. Nothing reaches the teacher until you share it.',
   },
   whoSees: {
     question: 'Who can see my observations?',
     answer: 'Only you. Not your AP, not your principal, not Observly.',
   },
-  connection: {
-    question: 'Do I need a connection?',
-    answer:
-      'Walkthroughs work fully offline. Formal and informal observations need a connection to start; everything syncs automatically.',
-  },
-  devices: {
-    question: 'Which devices does it run on?',
-    answer: 'iPhone and web (any laptop browser).',
-  },
-  trial: {
-    question: "What's in the free trial?",
-    answer: '14 days, 2 observations, 3 walkthroughs. Card required, not charged.',
-  },
 } satisfies Record<string, FAQ>;
 
 export const founder: FounderNote = {
-  sentences: [
-    "I'm Kanat. I run after-school programs in NYC public schools, and I built Observly with NYC principals.",
-    'I onboard every new school personally.',
+  title: 'Why we built Observly',
+  origin: 'Observly started in NYC public schools, where our founder, Kanat, runs after-school programs.',
+  principles: [
+    {
+      title: 'Growth, not paperwork.',
+      body: 'Every observation should end in a conversation with the teacher.',
+    },
+    {
+      title: 'The AI drafts. You decide.',
+      body: 'Observly drafts the evidence. Every rating is yours, and nothing reaches the teacher until you share it.',
+    },
+    {
+      title: 'Your observations are yours.',
+      body: 'Private — not visible to colleagues or Observly staff.',
+    },
+    {
+      title: 'Built with principals, not for them.',
+      body: 'Designed alongside NYC principals, around the Advance cycle you already run.',
+    },
   ],
-  signature: 'Kanat, founder',
+  onboarding: 'Start a free trial and our team will onboard your school personally.',
 };
 
 export const finalCta = {

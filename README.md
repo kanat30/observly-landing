@@ -21,7 +21,7 @@ Copy and design come from the GTM repo (`observly-gtm`), not from this README:
 7. Trust block
 8. Pricing — Starter / Plus / Max; rows: monthly, annual, seats, AI credits; same features on every tier; trial box
 9. FAQ
-10. Founder note
+10. Why we built Observly (founding principles)
 11. Final CTA
 
 Primary CTA everywhere: **Start free trial** → https://app.observly.co/signup
